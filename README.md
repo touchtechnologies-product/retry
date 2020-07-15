@@ -1,0 +1,1 @@
+Usage example can be found in main_test.go
