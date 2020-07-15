@@ -24,7 +24,7 @@ func (suite *PackageTestSuite) SetupTest() {
 	suite.maxRetry = 3
 }
 
-func (suite *PackageTestSuite) TestInitNewInmemManager() {
+func (suite *PackageTestSuite) TestInitNewInMemManager() {
 	manager, err := NewManager(InMemType, suite.backOffTime, suite.maxRetry)
 	suite.NoError(err)
 	suite.Equal(suite.inMemType, fmt.Sprint(reflect.TypeOf(manager)))

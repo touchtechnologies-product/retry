@@ -4,7 +4,6 @@ import (
 	"errors"
 )
 
-// Manager Manage retry
 type Manager interface {
 	GetRetryCount(key string) int
 	AddRetryCount(key string) int
@@ -13,21 +12,19 @@ type Manager interface {
 	IsMaximumRetry(key string) bool
 }
 
-// InMemType In memory type
-const InMemType = "inmem"
+const InMemType = "inMem"
 
-// NewManager make new manager
-func NewManager(mtype string, backOffTime int, maxRetry int) (m Manager, err error) {
-	switch mtype {
-	case "inmem":
+func NewManager(mType string, backOffTime int, maxRetry int) (m Manager, err error) {
+	switch mType {
+	case "inMem":
 		m := InMemManager{
 			data:             map[string]int{},
 			retryBackOffTime: backOffTime,
-			maximumRetyCount: maxRetry,
+			maximumRetryCount: maxRetry,
 		}
 
 		return &m, nil
 	default:
-		return m, errors.New("Invalid type")
+		return m, errors.New("invalid type")
 	}
 }
